@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <ItemGroup>
+
+	<ItemGroup>
     <ProjectReference Include="..\QuanLyCafe.BLL\QuanLyCafe.BLL.csproj" />
     <ProjectReference Include="..\QuanLyCafe.Models\QuanLyCafe.Models.csproj" />
     <ProjectReference Include="..\QuanLyCafe.Common\QuanLyCafe.Common.csproj" />
