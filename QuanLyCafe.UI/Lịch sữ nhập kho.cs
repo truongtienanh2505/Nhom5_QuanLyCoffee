@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyCafe.UI
 {
-    public partial class Thống_kê : Form
+    public partial class Lịch_sữ_nhập_kho : Form
     {
-        public Thống_kê()
+        public Lịch_sữ_nhập_kho()
         {
             InitializeComponent();
         }
