@@ -59,5 +59,15 @@ namespace QuanLyCafe.UI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap anh_cafe_20 {
+            get {
+                object obj = ResourceManager.GetObject("anh-cafe-20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

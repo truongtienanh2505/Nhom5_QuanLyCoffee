@@ -69,11 +69,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(307, 17);
+            label1.Location = new Point(238, 16);
             label1.Name = "label1";
-            label1.Size = new Size(161, 45);
+            label1.Size = new Size(303, 45);
             label1.TabIndex = 0;
-            label1.Text = "Sản phẩm";
+            label1.Text = "Sản phẩm nhập kho";
             // 
             // panel2
             // 
@@ -280,7 +280,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Sản_phẩm";
-            Text = "Sản_phẩm";
+            Text = "Nhập kho";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
