@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuanLyCafe.Models\QuanLyCafe.Models.csproj" />
-    <ProjectReference Include="..\QuanLyCafe.Common\QuanLyCafe.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
