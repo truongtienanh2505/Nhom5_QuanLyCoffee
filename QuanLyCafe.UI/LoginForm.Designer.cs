@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            btnExit = new Button();
+            btnLogin = new Button();
             panel1 = new Panel();
             label1 = new Label();
             label2 = new Label();
@@ -36,8 +38,6 @@
             txtPass = new TextBox();
             panel2 = new Panel();
             txtUser = new TextBox();
-            btnLogin = new Button();
-            btnExit = new Button();
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -52,6 +52,24 @@
             panel3.Size = new Size(584, 75);
             panel3.TabIndex = 2;
             // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(386, 16);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(112, 34);
+            btnExit.TabIndex = 0;
+            btnExit.Text = "Thoát";
+            btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(159, 16);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(112, 34);
+            btnLogin.TabIndex = 0;
+            btnLogin.Text = "Đăng nhập";
+            btnLogin.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             panel1.Controls.Add(label1);
@@ -64,11 +82,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(207, 17);
+            label1.Location = new Point(160, 18);
             label1.Name = "label1";
-            label1.Size = new Size(157, 55);
+            label1.Size = new Size(291, 55);
             label1.TabIndex = 0;
-            label1.Text = "Coffee";
+            label1.Text = "Allied Coffee";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -113,24 +131,6 @@
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(279, 31);
             txtUser.TabIndex = 2;
-            // 
-            // btnLogin
-            // 
-            btnLogin.Location = new Point(159, 16);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(112, 34);
-            btnLogin.TabIndex = 0;
-            btnLogin.Text = "Đăng nhập";
-            btnLogin.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            btnExit.Location = new Point(386, 16);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(112, 34);
-            btnExit.TabIndex = 0;
-            btnExit.Text = "Thoát";
-            btnExit.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
