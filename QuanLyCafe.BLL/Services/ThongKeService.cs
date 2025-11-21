@@ -4,28 +4,30 @@ using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
 
+
 namespace QuanLyCafe.BLL.Services
 {
     public class ThongKeService : IThongKeService
     {
-        private readonly ThongKeRepository _thongKeRepository;
+        private readonly ThongKeRepository _repo;
 
         public ThongKeService()
         {
-            _thongKeRepository = new ThongKeRepository();
+            _repo = new ThongKeRepository();
         }
 
         public List<SanPham> GetSanPhamSapHetHan()
         {
-            return _thongKeRepository.GetSanPhamSapHetHan();
+            return _repo.GetSanPhamSapHetHan();
         }
 
         public List<DoanhThuNgay> GetDoanhThuNgay(DateTime? from = null, DateTime? to = null)
         {
-            if (from.HasValue && to.HasValue && from > to)
-                throw new ArgumentException("Từ ngày không được lớn hơn đến ngày.");
-
-            return _thongKeRepository.GetDoanhThuNgay(from, to);
+            return _repo.GetDoanhThuNgay(from, to);
+        }
+        public List<DoanhThuThang> GetDoanhThuThang(int? nam = null)
+        {
+            return _repo.GetDoanhThuThang(nam);
         }
     }
 }

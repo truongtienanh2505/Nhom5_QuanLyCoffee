@@ -60,6 +60,7 @@
             btnExit.TabIndex = 0;
             btnExit.Text = "Thoát";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // btnLogin
             // 
@@ -69,6 +70,7 @@
             btnLogin.TabIndex = 0;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // panel1
             // 

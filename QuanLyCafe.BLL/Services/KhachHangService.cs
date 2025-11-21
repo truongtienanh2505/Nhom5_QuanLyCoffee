@@ -1,68 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using QuanLyCafe.BLL.Interfaces;
+﻿using QuanLyCafe.BLL.Interfaces;
+using QuanLyCafe.DAL;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
+using System;
+using System.Collections.Generic;
 
 namespace QuanLyCafe.BLL.Services
 {
     public class KhachHangService : IKhachHangService
     {
-        private readonly KhachHangRepository _khachHangRepository;
+        private readonly KhachHangRepository _repo;
 
         public KhachHangService()
         {
-            _khachHangRepository = new KhachHangRepository();
+            _repo = new KhachHangRepository();
         }
 
         public List<KhachHang> GetAll()
         {
-            return _khachHangRepository.GetAll();
+            return _repo.GetAll();
         }
 
         public KhachHang? GetById(int maKh)
         {
-            if (maKh <= 0)
-                throw new ArgumentException("Mã khách hàng không hợp lệ.");
-
-            return _khachHangRepository.GetById(maKh);
+            return _repo.GetById(maKh);
         }
 
         public void ThemKhachHang(KhachHang kh)
         {
-            ValidateKhachHang(kh);
-            _khachHangRepository.ThemKhachHang(kh);
+            if (string.IsNullOrEmpty(kh.TenKH) || string.IsNullOrEmpty(kh.SDT))
+                throw new Exception("Tên và SDT không được để trống.");
+
+            _repo.ThemKhachHang(kh);
         }
 
         public void SuaKhachHang(KhachHang kh)
         {
-            if (kh == null)
-                throw new ArgumentNullException(nameof(kh));
-
             if (kh.MaKH <= 0)
-                throw new ArgumentException("Mã khách hàng không hợp lệ.");
+                throw new Exception("Mã khách hàng không hợp lệ.");
 
-            ValidateKhachHang(kh);
-            _khachHangRepository.SuaKhachHang(kh);
+            _repo.SuaKhachHang(kh);
         }
 
         public void XoaKhachHang(int maKh)
         {
             if (maKh <= 0)
-                throw new ArgumentException("Mã khách hàng không hợp lệ.");
+                throw new Exception("Mã khách hàng không hợp lệ.");
 
-            _khachHangRepository.XoaKhachHang(maKh);
+            _repo.XoaKhachHang(maKh);
         }
 
-        private void ValidateKhachHang(KhachHang kh)
+        public List<KhachHang> TimKiem(string keyword)
         {
-            if (kh == null)
-                throw new ArgumentNullException(nameof(kh));
-
-            if (string.IsNullOrWhiteSpace(kh.TenKH))
-                throw new ArgumentException("Tên khách hàng không được để trống.");
-
-            
+            return _repo.TimKiem(keyword);
         }
     }
 }
+    

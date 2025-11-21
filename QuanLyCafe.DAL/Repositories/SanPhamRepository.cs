@@ -55,7 +55,6 @@ namespace QuanLyCafe.DAL.Repositories
                 }
             }
         }
-
         public void SuaSanPham(SanPham sp)
         {
             using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -74,6 +73,70 @@ namespace QuanLyCafe.DAL.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+        public void XoaSanPham(int maSP)
+        {
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM SanPham WHERE MaSP = @MaSP", conn);
+                cmd.Parameters.AddWithValue("@MaSP", maSP);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<SanPham> TimKiem(string keyword)
+        {
+            List<SanPham> list = new List<SanPham>();
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT * FROM SanPham WHERE TenSP LIKE @kw", conn);
+                cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+
+                conn.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    list.Add(new SanPham
+                    {
+                        MaSP = (int)rd["MaSP"],
+                        TenSP = rd["TenSP"].ToString(),
+                        DonGia = (decimal)rd["DonGia"],
+                        SoLuongTon = (int)rd["SoLuongTon"],
+                        HanSuDung = (DateTime)rd["HanSuDung"]
+                    });
+                }
+            }
+            return list;
+        }
+        private readonly string _connStr = DatabaseConfig.ConnectionString;
+            public List<SanPham> GetSanPhamSapHetHan()
+        {
+            List<SanPham> list = new List<SanPham>();
+
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM VW_SanPhamSapHetHan", conn);
+
+                conn.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    list.Add(new SanPham
+                    {
+                        MaSP = (int)rd["MaSP"],
+                        TenSP = rd["TenSP"].ToString(),
+                        DonGia = (decimal)rd["DonGia"],
+                        SoLuongTon = (int)rd["SoLuongTon"],
+                        HanSuDung = (DateTime)rd["HanSuDung"]
+                    });
+                }
+            }
+            return list;
         }
     }
 }

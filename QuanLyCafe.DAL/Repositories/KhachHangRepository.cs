@@ -116,5 +116,28 @@ namespace QuanLyCafe.DAL.Repositories
                 }
             }
         }
+        public List<KhachHang> TimKiem(string keyword)
+        {
+            var list = new List<KhachHang>();
+            using (SqlConnection conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            {
+                string query = "SELECT MaKH, TenKH, SDT, DiaChi FROM KhachHang WHERE TenKH LIKE @kw OR SDT LIKE @kw";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new KhachHang
+                    {
+                        MaKH = (int)reader["MaKH"],
+                        TenKH = reader["TenKH"].ToString(),
+                        SDT = reader["SDT"].ToString(),
+                        DiaChi = reader["DiaChi"].ToString()
+                    });
+                }
+            }
+            return list;
+        }
     }
 }

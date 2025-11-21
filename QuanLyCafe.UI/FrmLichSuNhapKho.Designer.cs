@@ -31,6 +31,7 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            cboSanPham = new ComboBox();
             label4 = new Label();
             btnLoc = new Button();
             dtpTo = new DateTimePicker();
@@ -39,7 +40,6 @@
             label2 = new Label();
             panel3 = new Panel();
             dgvLichSu = new DataGridView();
-            cboSanPham = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -78,6 +78,15 @@
             panel2.Size = new Size(892, 135);
             panel2.TabIndex = 4;
             // 
+            // cboSanPham
+            // 
+            cboSanPham.FormattingEnabled = true;
+            cboSanPham.Location = new Point(130, 74);
+            cboSanPham.Name = "cboSanPham";
+            cboSanPham.Size = new Size(337, 33);
+            cboSanPham.TabIndex = 5;
+            cboSanPham.SelectedIndexChanged += cboSanPham_SelectedIndexChanged;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -95,6 +104,7 @@
             btnLoc.TabIndex = 3;
             btnLoc.Text = "Lọc";
             btnLoc.UseVisualStyleBackColor = true;
+            btnLoc.Click += btnLoc_Click;
             // 
             // dtpTo
             // 
@@ -144,14 +154,6 @@
             dgvLichSu.RowHeadersWidth = 62;
             dgvLichSu.Size = new Size(886, 245);
             dgvLichSu.TabIndex = 0;
-            // 
-            // cboSanPham
-            // 
-            cboSanPham.FormattingEnabled = true;
-            cboSanPham.Location = new Point(130, 74);
-            cboSanPham.Name = "cboSanPham";
-            cboSanPham.Size = new Size(337, 33);
-            cboSanPham.TabIndex = 5;
             // 
             // FrmLichSuNhapKho
             // 
