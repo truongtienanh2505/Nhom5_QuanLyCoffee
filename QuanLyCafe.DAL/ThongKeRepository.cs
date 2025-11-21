@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QuanLyCafe.Models;
 
 namespace QuanLyCafe.DAL
 {
@@ -16,9 +17,12 @@ namespace QuanLyCafe.DAL
             using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
             {
                 conn.Open();
-
-                using (var cmd = new SqlCommand(
-                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM VW_SanPhamSapHetHan", conn))
+                string sql = @"
+                    SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung 
+                    FROM SanPham 
+                    WHERE HanSuDung <= DATEADD(DAY, 7, GETDATE())
+                    ORDER BY HanSuDung ASC";
+                using (var cmd = new SqlCommand(sql, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -26,7 +30,7 @@ namespace QuanLyCafe.DAL
                         result.Add(new SanPham
                         {
                             MaSP = (int)reader["MaSP"],
-                            TenSP = (string)reader["TenSP"],
+                            TenSP = reader["TenSP"].ToString() ?? "",
                             DonGia = (decimal)reader["DonGia"],
                             SoLuongTon = (int)reader["SoLuongTon"],
                             HanSuDung = (DateTime)reader["HanSuDung"]
