@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <None Include="Database.cs" />
+    <None Include="DatabaseConfig.cs" />
   </ItemGroup>
 
   <ItemGroup>
