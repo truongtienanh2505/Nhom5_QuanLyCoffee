@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <None Include="Database.cs" />
+    <None Include="DatabaseConfig.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QuanLyCafe.Models\QuanLyCafe.Models.csproj" />
-    <ProjectReference Include="..\QuanLyCafe.Common\QuanLyCafe.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
