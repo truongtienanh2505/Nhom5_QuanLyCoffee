@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            dgvHoaDon = new DataGridView();
             label1 = new Label();
-            label2 = new Label();
+            panel2 = new Panel();
+            btnSearch = new Button();
+            btnXemChiTiet = new Button();
+            txtSearch = new TextBox();
+            label4 = new Label();
+            btnLoc = new Button();
+            dtpTo = new DateTimePicker();
             dtpFrom = new DateTimePicker();
             label3 = new Label();
-            dtpTo = new DateTimePicker();
-            btnLoc = new Button();
-            label4 = new Label();
-            txtSearch = new TextBox();
-            btnXemChiTiet = new Button();
-            btnSearch = new Button();
+            label2 = new Label();
+            panel3 = new Panel();
+            dgvHoaDon = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -55,6 +55,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(892, 66);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(202, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(505, 51);
+            label1.TabIndex = 0;
+            label1.Text = "DANH SÁCH HOÁ ĐƠN";
             // 
             // panel2
             // 
@@ -71,6 +81,84 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(892, 135);
             panel2.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(542, 72);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(112, 34);
+            btnSearch.TabIndex = 7;
+            btnSearch.Text = "Tìm";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnXemChiTiet
+            // 
+            btnXemChiTiet.Location = new Point(720, 71);
+            btnXemChiTiet.Name = "btnXemChiTiet";
+            btnXemChiTiet.Size = new Size(158, 34);
+            btnXemChiTiet.TabIndex = 6;
+            btnXemChiTiet.Text = "Xem chi tiết";
+            btnXemChiTiet.UseVisualStyleBackColor = true;
+            btnXemChiTiet.Click += btnXemChiTiet_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(109, 74);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(400, 31);
+            txtSearch.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(17, 77);
+            label4.Name = "label4";
+            label4.Size = new Size(93, 25);
+            label4.TabIndex = 4;
+            label4.Text = "Tìm kiếm :";
+            // 
+            // btnLoc
+            // 
+            btnLoc.Location = new Point(777, 11);
+            btnLoc.Name = "btnLoc";
+            btnLoc.Size = new Size(101, 34);
+            btnLoc.TabIndex = 3;
+            btnLoc.Text = "Lọc";
+            btnLoc.UseVisualStyleBackColor = true;
+            btnLoc.Click += btnLoc_Click;
+            // 
+            // dtpTo
+            // 
+            dtpTo.Location = new Point(467, 14);
+            dtpTo.Name = "dtpTo";
+            dtpTo.Size = new Size(300, 31);
+            dtpTo.TabIndex = 2;
+            // 
+            // dtpFrom
+            // 
+            dtpFrom.Location = new Point(81, 14);
+            dtpFrom.Name = "dtpFrom";
+            dtpFrom.Size = new Size(300, 31);
+            dtpFrom.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(396, 19);
+            label3.Name = "label3";
+            label3.Size = new Size(53, 25);
+            label3.TabIndex = 0;
+            label3.Text = "Đến :";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 19);
+            label2.Name = "label2";
+            label2.Size = new Size(41, 25);
+            label2.TabIndex = 0;
+            label2.Text = "Từ :";
             // 
             // panel3
             // 
@@ -89,91 +177,6 @@
             dgvHoaDon.Size = new Size(886, 245);
             dgvHoaDon.TabIndex = 0;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(202, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(505, 51);
-            label1.TabIndex = 0;
-            label1.Text = "DANH SÁCH HOÁ ĐƠN";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(41, 25);
-            label2.TabIndex = 0;
-            label2.Text = "Từ :";
-            // 
-            // dtpFrom
-            // 
-            dtpFrom.Location = new Point(81, 14);
-            dtpFrom.Name = "dtpFrom";
-            dtpFrom.Size = new Size(300, 31);
-            dtpFrom.TabIndex = 1;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(396, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(53, 25);
-            label3.TabIndex = 0;
-            label3.Text = "Đến :";
-            // 
-            // dtpTo
-            // 
-            dtpTo.Location = new Point(467, 14);
-            dtpTo.Name = "dtpTo";
-            dtpTo.Size = new Size(300, 31);
-            dtpTo.TabIndex = 2;
-            // 
-            // btnLoc
-            // 
-            btnLoc.Location = new Point(777, 11);
-            btnLoc.Name = "btnLoc";
-            btnLoc.Size = new Size(101, 34);
-            btnLoc.TabIndex = 3;
-            btnLoc.Text = "Lọc";
-            btnLoc.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(17, 77);
-            label4.Name = "label4";
-            label4.Size = new Size(93, 25);
-            label4.TabIndex = 4;
-            label4.Text = "Tìm kiếm :";
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(109, 74);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(400, 31);
-            txtSearch.TabIndex = 5;
-            // 
-            // btnXemChiTiet
-            // 
-            btnXemChiTiet.Location = new Point(720, 71);
-            btnXemChiTiet.Name = "btnXemChiTiet";
-            btnXemChiTiet.Size = new Size(158, 34);
-            btnXemChiTiet.TabIndex = 6;
-            btnXemChiTiet.Text = "Xem chi tiết";
-            btnXemChiTiet.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(542, 72);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(112, 34);
-            btnSearch.TabIndex = 7;
-            btnSearch.Text = "Tìm";
-            btnSearch.UseVisualStyleBackColor = true;
-            // 
             // FrmDanhSachHoaDon
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -184,6 +187,7 @@
             Controls.Add(panel1);
             Name = "FrmDanhSachHoaDon";
             Text = "FrmDanhSachHoaDon";
+            Load += FrmDanhSachHoaDon_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

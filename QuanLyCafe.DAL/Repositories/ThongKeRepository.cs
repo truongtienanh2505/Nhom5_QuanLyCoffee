@@ -74,5 +74,37 @@ namespace QuanLyCafe.DAL.Repositories
 
             return result;
         }
+        public List<DoanhThuThang> GetDoanhThuThang(int? nam = null)
+        {
+            var list = new List<DoanhThuThang>();
+
+            using (SqlConnection conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            {
+                conn.Open();
+                string sql = @"
+                    SELECT YEAR(NgayGD) AS Nam,
+                           MONTH(NgayGD) AS Thang,
+                           SUM(SoTienPhaiTra) AS DoanhThu
+                    FROM HoaDon
+                    WHERE (@nam IS NULL OR YEAR(NgayGD) = @nam)
+                    GROUP BY YEAR(NgayGD), MONTH(NgayGD)
+                    ORDER BY YEAR(NgayGD), MONTH(NgayGD)";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nam", (object)nam ?? DBNull.Value);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    list.Add(new DoanhThuThang
+                    {
+                        Nam = Convert.ToInt32(rd["Nam"]),
+                        Thang = Convert.ToInt32(rd["Thang"]),
+                        DoanhThu = Convert.ToDecimal(rd["DoanhThu"])
+                    });
+                }
+            }
+            return list;
+        }
     }
 }

@@ -4,15 +4,16 @@ using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
 
+
 namespace QuanLyCafe.BLL.Services
 {
     public class ThongKeService : IThongKeService
     {
-        private readonly ThongKeRepository _thongKeRepository;
+        private readonly ThongKeRepository _repo;
 
         public ThongKeService()
         {
-            _thongKeRepository = new ThongKeRepository();
+            _repo = new ThongKeRepository();
         }
 
         public List<SanPham> GetSanPhamSapHetHan()

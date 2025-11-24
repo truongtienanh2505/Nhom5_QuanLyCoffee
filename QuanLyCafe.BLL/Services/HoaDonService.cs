@@ -19,10 +19,7 @@ namespace QuanLyCafe.BLL.Services
 
         public int TaoHoaDon(int? maKh)
         {
-            if (maKh.HasValue && maKh.Value <= 0)
-                throw new ArgumentException("Mã khách hàng không hợp lệ.");
-
-            return _hoaDonRepository.TaoHoaDon(maKh);
+            return _repo.TaoHoaDon(maKh);
         }
 
         public void TinhTienHoaDon(int maHd)
@@ -40,18 +37,12 @@ namespace QuanLyCafe.BLL.Services
 
         public HoaDon? GetById(int maHd)
         {
-            if (maHd <= 0)
-                throw new ArgumentException("Mã hóa đơn không hợp lệ.");
-
-            return _hoaDonRepository.GetById(maHd);
+            return _repo.GetById(maHd);
         }
 
         public List<HoaDon> GetByDate(DateTime from, DateTime to)
         {
-            if (from > to)
-                throw new ArgumentException("Từ ngày không được lớn hơn đến ngày.");
-
-            return _hoaDonRepository.GetByDate(from, to);
+            return _repo.GetByDate(from, to);
         }
     }
 }

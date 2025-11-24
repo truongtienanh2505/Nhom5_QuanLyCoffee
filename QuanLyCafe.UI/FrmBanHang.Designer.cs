@@ -29,13 +29,29 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label1 = new Label();
             panel3 = new Panel();
+            cboKhachHang = new ComboBox();
+            label9 = new Label();
             panel4 = new Panel();
+            btnInHD = new Button();
+            btnThanhToan = new Button();
+            btnXoaSP = new Button();
+            btnTaoHoaDon = new Button();
             panel5 = new Panel();
+            lblPhaiTra = new Label();
+            lblKhuyenMai = new Label();
+            lblTongTien = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
             panel6 = new Panel();
-            panel7 = new Panel();
-            panel8 = new Panel();
             dgvSanPham = new DataGridView();
+            panel7 = new Panel();
+            btnThemSP = new Button();
+            numSoLuong = new NumericUpDown();
+            label5 = new Label();
+            panel8 = new Panel();
             dgvGioHang = new DataGridView();
             panel2 = new Panel();
             txtSDT = new TextBox();
@@ -44,33 +60,17 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            label1 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            btnTaoHoaDon = new Button();
-            btnXoaSP = new Button();
-            btnThanhToan = new Button();
-            btnInHD = new Button();
-            cboKhachHang = new ComboBox();
-            numSoLuong = new NumericUpDown();
-            lblTongTien = new Label();
-            lblKhuyenMai = new Label();
-            lblPhaiTra = new Label();
-            btnThemSP = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
-            panel7.SuspendLayout();
-            panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
+            panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGioHang).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -81,6 +81,16 @@
             panel1.Size = new Size(818, 70);
             panel1.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(239, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(337, 51);
+            label1.TabIndex = 0;
+            label1.Text = "TẠO HOÁ ĐƠN";
+            // 
             // panel3
             // 
             panel3.Controls.Add(cboKhachHang);
@@ -89,6 +99,23 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(817, 52);
             panel3.TabIndex = 2;
+            // 
+            // cboKhachHang
+            // 
+            cboKhachHang.FormattingEnabled = true;
+            cboKhachHang.Location = new Point(175, 11);
+            cboKhachHang.Name = "cboKhachHang";
+            cboKhachHang.Size = new Size(373, 33);
+            cboKhachHang.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(49, 14);
+            label9.Name = "label9";
+            label9.Size = new Size(116, 25);
+            label9.TabIndex = 0;
+            label9.Text = "Khách Hàng :";
             // 
             // panel4
             // 
@@ -100,6 +127,46 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(818, 56);
             panel4.TabIndex = 3;
+            // 
+            // btnInHD
+            // 
+            btnInHD.Location = new Point(523, 12);
+            btnInHD.Name = "btnInHD";
+            btnInHD.Size = new Size(141, 34);
+            btnInHD.TabIndex = 3;
+            btnInHD.Text = "In Hoá Đơn";
+            btnInHD.UseVisualStyleBackColor = true;
+            btnInHD.Click += btnInHD_Click;
+            // 
+            // btnThanhToan
+            // 
+            btnThanhToan.Location = new Point(376, 12);
+            btnThanhToan.Name = "btnThanhToan";
+            btnThanhToan.Size = new Size(112, 34);
+            btnThanhToan.TabIndex = 2;
+            btnThanhToan.Text = "Thanh Toán";
+            btnThanhToan.UseVisualStyleBackColor = true;
+            btnThanhToan.Click += btnThanhToan_Click;
+            // 
+            // btnXoaSP
+            // 
+            btnXoaSP.Location = new Point(205, 12);
+            btnXoaSP.Name = "btnXoaSP";
+            btnXoaSP.Size = new Size(146, 34);
+            btnXoaSP.TabIndex = 1;
+            btnXoaSP.Text = "Xoá Sản Phẩm";
+            btnXoaSP.UseVisualStyleBackColor = true;
+            btnXoaSP.Click += btnXoaSP_Click;
+            // 
+            // btnTaoHoaDon
+            // 
+            btnTaoHoaDon.Location = new Point(36, 12);
+            btnTaoHoaDon.Name = "btnTaoHoaDon";
+            btnTaoHoaDon.Size = new Size(146, 34);
+            btnTaoHoaDon.TabIndex = 0;
+            btnTaoHoaDon.Text = "Tạo Hoá Đơn";
+            btnTaoHoaDon.UseVisualStyleBackColor = true;
+            btnTaoHoaDon.Click += btnTaoHoaDon_Click;
             // 
             // panel5
             // 
@@ -114,6 +181,60 @@
             panel5.Size = new Size(335, 256);
             panel5.TabIndex = 4;
             // 
+            // lblPhaiTra
+            // 
+            lblPhaiTra.AutoSize = true;
+            lblPhaiTra.Location = new Point(137, 181);
+            lblPhaiTra.Name = "lblPhaiTra";
+            lblPhaiTra.Size = new Size(22, 25);
+            lblPhaiTra.TabIndex = 5;
+            lblPhaiTra.Text = "0";
+            // 
+            // lblKhuyenMai
+            // 
+            lblKhuyenMai.AutoSize = true;
+            lblKhuyenMai.Location = new Point(137, 115);
+            lblKhuyenMai.Name = "lblKhuyenMai";
+            lblKhuyenMai.Size = new Size(22, 25);
+            lblKhuyenMai.TabIndex = 4;
+            lblKhuyenMai.Text = "0";
+            // 
+            // lblTongTien
+            // 
+            lblTongTien.AutoSize = true;
+            lblTongTien.Location = new Point(137, 47);
+            lblTongTien.Name = "lblTongTien";
+            lblTongTien.Size = new Size(22, 25);
+            lblTongTien.TabIndex = 3;
+            lblTongTien.Text = "0";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(14, 181);
+            label8.Name = "label8";
+            label8.Size = new Size(103, 25);
+            label8.TabIndex = 2;
+            label8.Text = "Thành tiền :";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(14, 115);
+            label7.Name = "label7";
+            label7.Size = new Size(113, 25);
+            label7.TabIndex = 1;
+            label7.Text = "Khuyến mãi :";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(14, 47);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 25);
+            label6.TabIndex = 0;
+            label6.Text = "Tổng tiền :";
+            // 
             // panel6
             // 
             panel6.Controls.Add(dgvSanPham);
@@ -121,6 +242,15 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(475, 162);
             panel6.TabIndex = 5;
+            // 
+            // dgvSanPham
+            // 
+            dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSanPham.Location = new Point(4, 3);
+            dgvSanPham.Name = "dgvSanPham";
+            dgvSanPham.RowHeadersWidth = 62;
+            dgvSanPham.Size = new Size(466, 156);
+            dgvSanPham.TabIndex = 0;
             // 
             // panel7
             // 
@@ -132,6 +262,32 @@
             panel7.Size = new Size(476, 48);
             panel7.TabIndex = 6;
             // 
+            // btnThemSP
+            // 
+            btnThemSP.Location = new Point(277, 7);
+            btnThemSP.Name = "btnThemSP";
+            btnThemSP.Size = new Size(195, 32);
+            btnThemSP.TabIndex = 2;
+            btnThemSP.Text = "Thêm vào giỏ hàng";
+            btnThemSP.UseVisualStyleBackColor = true;
+            btnThemSP.Click += btnThemSP_Click;
+            // 
+            // numSoLuong
+            // 
+            numSoLuong.Location = new Point(135, 9);
+            numSoLuong.Name = "numSoLuong";
+            numSoLuong.Size = new Size(117, 31);
+            numSoLuong.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(25, 11);
+            label5.Name = "label5";
+            label5.Size = new Size(94, 25);
+            label5.TabIndex = 0;
+            label5.Text = "Số lượng :";
+            // 
             // panel8
             // 
             panel8.Controls.Add(dgvGioHang);
@@ -139,15 +295,6 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(475, 271);
             panel8.TabIndex = 7;
-            // 
-            // dgvSanPham
-            // 
-            dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSanPham.Location = new Point(4, 3);
-            dgvSanPham.Name = "dgvSanPham";
-            dgvSanPham.RowHeadersWidth = 62;
-            dgvSanPham.Size = new Size(466, 156);
-            dgvSanPham.TabIndex = 0;
             // 
             // dgvGioHang
             // 
@@ -219,148 +366,6 @@
             label2.TabIndex = 0;
             label2.Text = "Mã KH :";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(239, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(337, 51);
-            label1.TabIndex = 0;
-            label1.Text = "TẠO HOÁ ĐƠN";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(25, 11);
-            label5.Name = "label5";
-            label5.Size = new Size(94, 25);
-            label5.TabIndex = 0;
-            label5.Text = "Số lượng :";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(14, 47);
-            label6.Name = "label6";
-            label6.Size = new Size(96, 25);
-            label6.TabIndex = 0;
-            label6.Text = "Tổng tiền :";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(14, 115);
-            label7.Name = "label7";
-            label7.Size = new Size(113, 25);
-            label7.TabIndex = 1;
-            label7.Text = "Khuyến mãi :";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(14, 181);
-            label8.Name = "label8";
-            label8.Size = new Size(103, 25);
-            label8.TabIndex = 2;
-            label8.Text = "Thành tiền :";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(49, 14);
-            label9.Name = "label9";
-            label9.Size = new Size(116, 25);
-            label9.TabIndex = 0;
-            label9.Text = "Khách Hàng :";
-            // 
-            // btnTaoHoaDon
-            // 
-            btnTaoHoaDon.Location = new Point(36, 12);
-            btnTaoHoaDon.Name = "btnTaoHoaDon";
-            btnTaoHoaDon.Size = new Size(146, 34);
-            btnTaoHoaDon.TabIndex = 0;
-            btnTaoHoaDon.Text = "Tạo Hoá Đơn";
-            btnTaoHoaDon.UseVisualStyleBackColor = true;
-            // 
-            // btnXoaSP
-            // 
-            btnXoaSP.Location = new Point(205, 12);
-            btnXoaSP.Name = "btnXoaSP";
-            btnXoaSP.Size = new Size(146, 34);
-            btnXoaSP.TabIndex = 1;
-            btnXoaSP.Text = "Xoá Sản Phẩm";
-            btnXoaSP.UseVisualStyleBackColor = true;
-            // 
-            // btnThanhToan
-            // 
-            btnThanhToan.Location = new Point(376, 12);
-            btnThanhToan.Name = "btnThanhToan";
-            btnThanhToan.Size = new Size(112, 34);
-            btnThanhToan.TabIndex = 2;
-            btnThanhToan.Text = "Thanh Toán";
-            btnThanhToan.UseVisualStyleBackColor = true;
-            // 
-            // btnInHD
-            // 
-            btnInHD.Location = new Point(523, 12);
-            btnInHD.Name = "btnInHD";
-            btnInHD.Size = new Size(141, 34);
-            btnInHD.TabIndex = 3;
-            btnInHD.Text = "In Hoá Đơn";
-            btnInHD.UseVisualStyleBackColor = true;
-            // 
-            // cboKhachHang
-            // 
-            cboKhachHang.FormattingEnabled = true;
-            cboKhachHang.Location = new Point(175, 11);
-            cboKhachHang.Name = "cboKhachHang";
-            cboKhachHang.Size = new Size(373, 33);
-            cboKhachHang.TabIndex = 1;
-            // 
-            // numSoLuong
-            // 
-            numSoLuong.Location = new Point(135, 9);
-            numSoLuong.Name = "numSoLuong";
-            numSoLuong.Size = new Size(117, 31);
-            numSoLuong.TabIndex = 1;
-            // 
-            // lblTongTien
-            // 
-            lblTongTien.AutoSize = true;
-            lblTongTien.Location = new Point(137, 47);
-            lblTongTien.Name = "lblTongTien";
-            lblTongTien.Size = new Size(22, 25);
-            lblTongTien.TabIndex = 3;
-            lblTongTien.Text = "0";
-            // 
-            // lblKhuyenMai
-            // 
-            lblKhuyenMai.AutoSize = true;
-            lblKhuyenMai.Location = new Point(137, 115);
-            lblKhuyenMai.Name = "lblKhuyenMai";
-            lblKhuyenMai.Size = new Size(22, 25);
-            lblKhuyenMai.TabIndex = 4;
-            lblKhuyenMai.Text = "0";
-            // 
-            // lblPhaiTra
-            // 
-            lblPhaiTra.AutoSize = true;
-            lblPhaiTra.Location = new Point(137, 181);
-            lblPhaiTra.Name = "lblPhaiTra";
-            lblPhaiTra.Size = new Size(22, 25);
-            lblPhaiTra.TabIndex = 5;
-            lblPhaiTra.Text = "0";
-            // 
-            // btnThemSP
-            // 
-            btnThemSP.Location = new Point(277, 7);
-            btnThemSP.Name = "btnThemSP";
-            btnThemSP.Size = new Size(195, 32);
-            btnThemSP.TabIndex = 2;
-            btnThemSP.Text = "Thêm vào giỏ hàng";
-            btnThemSP.UseVisualStyleBackColor = true;
-            // 
             // FrmBanHang
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -376,6 +381,7 @@
             Controls.Add(panel1);
             Name = "FrmBanHang";
             Text = "FrmBanHang";
+            Load += FrmBanHang_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
@@ -384,14 +390,14 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
             panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvGioHang).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
             ResumeLayout(false);
         }
 

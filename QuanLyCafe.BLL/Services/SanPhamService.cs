@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using QuanLyCafe.BLL.Interfaces;
+using QuanLyCafe.DAL.Repositories;
+using QuanLyCafe.Models;
 
 namespace QuanLyCafe.BLL.Services
 {
