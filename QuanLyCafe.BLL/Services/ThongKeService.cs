@@ -4,6 +4,7 @@ using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
 
+
 namespace QuanLyCafe.BLL.Services
 {
     public class ThongKeService : IThongKeService
@@ -39,6 +40,19 @@ namespace QuanLyCafe.BLL.Services
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi lấy thống kê doanh thu: " + ex.Message, ex);
+            }
+        }
+        public List<DoanhThuThang> GetDoanhThuThang(int? nam = null)
+        {
+            int year = nam ?? DateTime.Now.Year;
+
+            try
+            {
+                return _thongKeRepository.GetDoanhThuThang(year);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy doanh thu tháng: " + ex.Message, ex);
             }
         }
     }

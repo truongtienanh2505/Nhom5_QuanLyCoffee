@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using QuanLyCafe.BLL.Interfaces;
+using QuanLyCafe.DAL.Repositories;
+using QuanLyCafe.Models;
 
 namespace QuanLyCafe.BLL.Services
 {
@@ -45,7 +44,7 @@ namespace QuanLyCafe.BLL.Services
         {
             ValidateSanPham(sp);
 
-            if (sp.MaSp <= 0)
+            if (sp.MaSP <= 0)
                 throw new ArgumentException("Mã sản phẩm không hợp lệ.");
 
             try
@@ -57,13 +56,17 @@ namespace QuanLyCafe.BLL.Services
                 throw new Exception("Lỗi khi sửa sản phẩm: " + ex.Message, ex);
             }
         }
+        public SanPham GetById(int id)
+        {
+            return _spRepository.GetById(id);
 
-        private void ValidateSanPham(SanPham sp)
+        }
+        public void ValidateSanPham(SanPham sp)
         {
             if (sp == null)
                 throw new ArgumentNullException(nameof(sp));
 
-            if (string.IsNullOrWhiteSpace(sp.TenSp))
+            if (string.IsNullOrWhiteSpace(sp.TenSP))
                 throw new ArgumentException("Tên sản phẩm không được để trống.");
 
             if (sp.DonGia <= 0)
@@ -71,6 +74,17 @@ namespace QuanLyCafe.BLL.Services
 
             if (sp.SoLuongTon < 0)
                 throw new ArgumentException("Số lượng tồn không được âm.");
+        }
+        public List<SanPham> GetSanPhamSapHetHan()
+        {
+            try
+            {
+                return _spRepository.GetSanPhamSapHetHan();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách sản phẩm sắp hết hạn: " + ex.Message, ex);
+            }
         }
     }
 }
