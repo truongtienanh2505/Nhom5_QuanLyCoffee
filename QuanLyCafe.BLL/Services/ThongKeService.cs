@@ -17,7 +17,14 @@ namespace QuanLyCafe.BLL.Services
 
         public List<SanPham> GetSanPhamSapHetHan()
         {
-            return _thongKeRepository.GetSanPhamSapHetHan();
+            try
+            {
+                return _thongKeRepository.GetSanPhamSapHetHan();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách sản phẩm sắp hết hạn: " + ex.Message, ex);
+            }
         }
 
         public List<DoanhThuNgay> GetDoanhThuNgay(DateTime? from = null, DateTime? to = null)
@@ -25,7 +32,14 @@ namespace QuanLyCafe.BLL.Services
             if (from.HasValue && to.HasValue && from > to)
                 throw new ArgumentException("Từ ngày không được lớn hơn đến ngày.");
 
-            return _thongKeRepository.GetDoanhThuNgay(from, to);
+            try
+            {
+                return _thongKeRepository.GetDoanhThuNgay(from, to);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thống kê doanh thu: " + ex.Message, ex);
+            }
         }
     }
 }

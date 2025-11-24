@@ -31,7 +31,14 @@ namespace QuanLyCafe.BLL.Services
         public void ThemKhachHang(KhachHang kh)
         {
             ValidateKhachHang(kh);
-            _khachHangRepository.ThemKhachHang(kh);
+            try
+            {
+                _khachHangRepository.ThemKhachHang(kh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi thêm khách hàng: " + ex.Message);
+            }
         }
 
         public void SuaKhachHang(KhachHang kh)
@@ -43,7 +50,14 @@ namespace QuanLyCafe.BLL.Services
                 throw new ArgumentException("Mã khách hàng không hợp lệ.");
 
             ValidateKhachHang(kh);
-            _khachHangRepository.SuaKhachHang(kh);
+            try
+            {
+                _khachHangRepository.SuaKhachHang(kh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi sửa khách hàng: " + ex.Message);
+            }
         }
 
         public void XoaKhachHang(int maKh)
@@ -51,7 +65,14 @@ namespace QuanLyCafe.BLL.Services
             if (maKh <= 0)
                 throw new ArgumentException("Mã khách hàng không hợp lệ.");
 
-            _khachHangRepository.XoaKhachHang(maKh);
+            try
+            {
+                _khachHangRepository.XoaKhachHang(maKh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi xoá khách hàng: " + ex.Message);
+            }
         }
 
         private void ValidateKhachHang(KhachHang kh)
@@ -62,7 +83,11 @@ namespace QuanLyCafe.BLL.Services
             if (string.IsNullOrWhiteSpace(kh.TenKH))
                 throw new ArgumentException("Tên khách hàng không được để trống.");
 
-            
+            if (!string.IsNullOrWhiteSpace(kh.SDT))
+            {
+                if (!Regex.IsMatch(kh.SDT, @"^(0[0-9]{9})$"))
+                    throw new ArgumentException("Số điện thoại không hợp lệ (phải 10 số).");
+            }
         }
     }
 }
