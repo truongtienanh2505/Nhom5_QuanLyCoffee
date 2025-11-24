@@ -7,49 +7,69 @@ namespace QuanLyCafe.BLL.Services
 {
     public class SanPhamService : ISanPhamService
     {
-        private readonly SanPhamRepository _repo;
+        private readonly SanPhamRepository _spRepository;
 
         public SanPhamService()
         {
-            _repo = new SanPhamRepository();
+            _spRepository = new SanPhamRepository();
         }
 
         public List<SanPham> GetAll()
         {
-            return _repo.GetAll();
+            try
+            {
+                return _spRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách sản phẩm: " + ex.Message, ex);
+            }
         }
 
         public void ThemSanPham(SanPham sp)
         {
-            if (string.IsNullOrWhiteSpace(sp.TenSP))
-                throw new Exception("Tên sản phẩm không được để trống!");
+            ValidateSanPham(sp);
 
-            if (sp.DonGia <= 0)
-                throw new Exception("Đơn giá phải lớn hơn 0!");
-
-            _repo.ThemSanPham(sp);
+            try
+            {
+                _spRepository.ThemSanPham(sp);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm sản phẩm: " + ex.Message, ex);
+            }
         }
 
         public void SuaSanPham(SanPham sp)
         {
-            if (sp.MaSP <= 0)
-                throw new Exception("Mã sản phẩm không hợp lệ!");
+            ValidateSanPham(sp);
 
-            _repo.SuaSanPham(sp);
-        }
-        public void XoaSanPham(int maSP)
-        {
-            _repo.XoaSanPham(maSP);
+            if (sp.MaSp <= 0)
+                throw new ArgumentException("Mã sản phẩm không hợp lệ.");
+
+            try
+            {
+                _spRepository.SuaSanPham(sp);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi sửa sản phẩm: " + ex.Message, ex);
+            }
         }
 
-        public List<SanPham> TimKiem(string keyword)
+        private void ValidateSanPham(SanPham sp)
         {
-            return _repo.TimKiem(keyword);
-        }
+            if (sp == null)
+                throw new ArgumentNullException(nameof(sp));
 
-        public List<SanPham> GetSanPhamSapHetHan()
-        {
-            return _repo.GetSanPhamSapHetHan();
+            if (string.IsNullOrWhiteSpace(sp.TenSp))
+                throw new ArgumentException("Tên sản phẩm không được để trống.");
+
+            if (sp.DonGia <= 0)
+                throw new ArgumentException("Đơn giá phải lớn hơn 0.");
+
+            if (sp.SoLuongTon < 0)
+                throw new ArgumentException("Số lượng tồn không được âm.");
         }
     }
 }

@@ -18,16 +18,29 @@ namespace QuanLyCafe.BLL.Services
 
         public List<SanPham> GetSanPhamSapHetHan()
         {
-            return _repo.GetSanPhamSapHetHan();
+            try
+            {
+                return _thongKeRepository.GetSanPhamSapHetHan();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách sản phẩm sắp hết hạn: " + ex.Message, ex);
+            }
         }
 
         public List<DoanhThuNgay> GetDoanhThuNgay(DateTime? from = null, DateTime? to = null)
         {
-            return _repo.GetDoanhThuNgay(from, to);
-        }
-        public List<DoanhThuThang> GetDoanhThuThang(int? nam = null)
-        {
-            return _repo.GetDoanhThuThang(nam);
+            if (from.HasValue && to.HasValue && from > to)
+                throw new ArgumentException("Từ ngày không được lớn hơn đến ngày.");
+
+            try
+            {
+                return _thongKeRepository.GetDoanhThuNgay(from, to);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thống kê doanh thu: " + ex.Message, ex);
+            }
         }
     }
 }

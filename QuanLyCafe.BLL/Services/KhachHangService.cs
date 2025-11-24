@@ -28,10 +28,15 @@ namespace QuanLyCafe.BLL.Services
 
         public void ThemKhachHang(KhachHang kh)
         {
-            if (string.IsNullOrEmpty(kh.TenKH) || string.IsNullOrEmpty(kh.SDT))
-                throw new Exception("Tên và SDT không được để trống.");
-
-            _repo.ThemKhachHang(kh);
+            ValidateKhachHang(kh);
+            try
+            {
+                _khachHangRepository.ThemKhachHang(kh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi thêm khách hàng: " + ex.Message);
+            }
         }
 
         public void SuaKhachHang(KhachHang kh)
@@ -39,7 +44,15 @@ namespace QuanLyCafe.BLL.Services
             if (kh.MaKH <= 0)
                 throw new Exception("Mã khách hàng không hợp lệ.");
 
-            _repo.SuaKhachHang(kh);
+            ValidateKhachHang(kh);
+            try
+            {
+                _khachHangRepository.SuaKhachHang(kh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi sửa khách hàng: " + ex.Message);
+            }
         }
 
         public void XoaKhachHang(int maKh)
@@ -47,12 +60,29 @@ namespace QuanLyCafe.BLL.Services
             if (maKh <= 0)
                 throw new Exception("Mã khách hàng không hợp lệ.");
 
-            _repo.XoaKhachHang(maKh);
+            try
+            {
+                _khachHangRepository.XoaKhachHang(maKh);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi xoá khách hàng: " + ex.Message);
+            }
         }
 
         public List<KhachHang> TimKiem(string keyword)
         {
-            return _repo.TimKiem(keyword);
+            if (kh == null)
+                throw new ArgumentNullException(nameof(kh));
+
+            if (string.IsNullOrWhiteSpace(kh.TenKH))
+                throw new ArgumentException("Tên khách hàng không được để trống.");
+
+            if (!string.IsNullOrWhiteSpace(kh.SDT))
+            {
+                if (!Regex.IsMatch(kh.SDT, @"^(0[0-9]{9})$"))
+                    throw new ArgumentException("Số điện thoại không hợp lệ (phải 10 số).");
+            }
         }
     }
 }

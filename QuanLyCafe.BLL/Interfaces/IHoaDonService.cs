@@ -4,6 +4,8 @@ using QuanLyCafe.Models;
 
 namespace QuanLyCafe.BLL.Interfaces
 {
+    namespace QuanLyCafe.BLL.Interfaces
+    {
         public interface IHoaDonService
         {
             int TaoHoaDon(int? maKh);
@@ -11,4 +13,5 @@ namespace QuanLyCafe.BLL.Interfaces
             HoaDon? GetById(int maHd);
             List<HoaDon> GetByDate(DateTime from, DateTime to);
         }
+    }
 }
