@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            panel4 = new Panel();
             label1 = new Label();
-            label2 = new Label();
-            cboSanPham = new ComboBox();
-            label3 = new Label();
+            panel2 = new Panel();
             numSoLuong = new NumericUpDown();
+            label3 = new Label();
+            cboSanPham = new ComboBox();
+            label2 = new Label();
+            panel3 = new Panel();
             dgvNhapGanDay = new DataGridView();
+            panel4 = new Panel();
             btnNhapKho = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhapGanDay).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -54,6 +54,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(629, 72);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(192, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(258, 51);
+            label1.TabIndex = 0;
+            label1.Text = "NHẬP KHO";
             // 
             // panel2
             // 
@@ -66,48 +76,12 @@
             panel2.Size = new Size(632, 50);
             panel2.TabIndex = 1;
             // 
-            // panel3
+            // numSoLuong
             // 
-            panel3.Controls.Add(dgvNhapGanDay);
-            panel3.Location = new Point(0, 136);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(631, 189);
-            panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(btnNhapKho);
-            panel4.Location = new Point(1, 333);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(631, 68);
-            panel4.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(192, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(258, 51);
-            label1.TabIndex = 0;
-            label1.Text = "NHẬP KHO";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(11, 13);
-            label2.Name = "label2";
-            label2.Size = new Size(100, 25);
-            label2.TabIndex = 0;
-            label2.Text = "Sản Phẩm :";
-            // 
-            // cboSanPham
-            // 
-            cboSanPham.FormattingEnabled = true;
-            cboSanPham.Location = new Point(118, 10);
-            cboSanPham.Name = "cboSanPham";
-            cboSanPham.Size = new Size(265, 33);
-            cboSanPham.TabIndex = 1;
+            numSoLuong.Location = new Point(501, 11);
+            numSoLuong.Name = "numSoLuong";
+            numSoLuong.Size = new Size(122, 31);
+            numSoLuong.TabIndex = 3;
             // 
             // label3
             // 
@@ -118,12 +92,31 @@
             label3.TabIndex = 2;
             label3.Text = "Số lượng :";
             // 
-            // numSoLuong
+            // cboSanPham
             // 
-            numSoLuong.Location = new Point(501, 11);
-            numSoLuong.Name = "numSoLuong";
-            numSoLuong.Size = new Size(122, 31);
-            numSoLuong.TabIndex = 3;
+            cboSanPham.FormattingEnabled = true;
+            cboSanPham.Location = new Point(118, 10);
+            cboSanPham.Name = "cboSanPham";
+            cboSanPham.Size = new Size(265, 33);
+            cboSanPham.TabIndex = 1;
+            cboSanPham.SelectedIndexChanged += cboSanPham_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(11, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 25);
+            label2.TabIndex = 0;
+            label2.Text = "Sản Phẩm :";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(dgvNhapGanDay);
+            panel3.Location = new Point(0, 136);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(631, 189);
+            panel3.TabIndex = 2;
             // 
             // dgvNhapGanDay
             // 
@@ -134,6 +127,14 @@
             dgvNhapGanDay.Size = new Size(622, 185);
             dgvNhapGanDay.TabIndex = 0;
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(btnNhapKho);
+            panel4.Location = new Point(1, 333);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(631, 68);
+            panel4.TabIndex = 3;
+            // 
             // btnNhapKho
             // 
             btnNhapKho.Location = new Point(417, 6);
@@ -142,6 +143,7 @@
             btnNhapKho.TabIndex = 0;
             btnNhapKho.Text = "Nhập Kho";
             btnNhapKho.UseVisualStyleBackColor = true;
+            btnNhapKho.Click += btnNhapKho_Click;
             // 
             // FrmNhapKho
             // 
@@ -158,10 +160,10 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
+            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvNhapGanDay).EndInit();
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 

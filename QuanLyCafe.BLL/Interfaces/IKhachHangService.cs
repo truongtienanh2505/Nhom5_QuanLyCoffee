@@ -10,5 +10,6 @@ namespace QuanLyCafe.BLL.Interfaces
         void ThemKhachHang(KhachHang kh);
         void SuaKhachHang(KhachHang kh);
         void XoaKhachHang(int maKh);
+        List<KhachHang> TimKiem(string keyword);
     }
 }
