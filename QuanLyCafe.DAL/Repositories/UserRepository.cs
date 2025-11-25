@@ -11,7 +11,7 @@ namespace QuanLyCafe.DAL.Repositories
 {
     public class UserRepository
     {
-        public User Login(string username, string password)
+        public User? Login(string username, string password)
         {
             using (var conn = DatabaseConfig.GetConnection())
             {
@@ -27,7 +27,7 @@ namespace QuanLyCafe.DAL.Repositories
                     return new User
                     {
                         UserId = (int)reader["UserId"],
-                        Username = reader["Username"].ToString()
+                        Username = reader["Username"] as string ?? string.Empty
                     };
                 }
             }
