@@ -138,7 +138,11 @@ namespace QuanLyCafe.DAL.Repositories
             }
             return list;
         }
+<<<<<<< HEAD
         public SanPham? GetById(int id)
+=======
+        public SanPham GetById(int id)
+>>>>>>> origin/Kieu_nx
         {
             using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
             {
@@ -157,7 +161,11 @@ namespace QuanLyCafe.DAL.Repositories
                             return new SanPham
                             {
                                 MaSP = (int)rd["MaSP"],
+<<<<<<< HEAD
                                 TenSP = rd["TenSP"] as string ?? string.Empty,
+=======
+                                TenSP = rd["TenSP"].ToString(),
+>>>>>>> origin/Kieu_nx
                                 DonGia = (decimal)rd["DonGia"],
                                 SoLuongTon = (int)rd["SoLuongTon"],
                                 HanSuDung = (DateTime)rd["HanSuDung"]
