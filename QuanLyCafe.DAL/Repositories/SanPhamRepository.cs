@@ -103,7 +103,7 @@ namespace QuanLyCafe.DAL.Repositories
                     list.Add(new SanPham
                     {
                         MaSP = (int)rd["MaSP"],
-                        TenSP = rd["TenSP"].ToString(),
+                        TenSP = rd["TenSP"] as string ?? string.Empty,
                         DonGia = (decimal)rd["DonGia"],
                         SoLuongTon = (int)rd["SoLuongTon"],
                         HanSuDung = (DateTime)rd["HanSuDung"]
@@ -129,7 +129,7 @@ namespace QuanLyCafe.DAL.Repositories
                     list.Add(new SanPham
                     {
                         MaSP = (int)rd["MaSP"],
-                        TenSP = rd["TenSP"].ToString(),
+                        TenSP = rd["TenSP"] as string ?? string.Empty,
                         DonGia = (decimal)rd["DonGia"],
                         SoLuongTon = (int)rd["SoLuongTon"],
                         HanSuDung = (DateTime)rd["HanSuDung"]
@@ -137,6 +137,37 @@ namespace QuanLyCafe.DAL.Repositories
                 }
             }
             return list;
+        }
+        public SanPham? GetById(int id)
+        {
+            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new SqlCommand(
+                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham WHERE MaSP = @id",
+                           conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        if (rd.Read())
+                        {
+                            return new SanPham
+                            {
+                                MaSP = (int)rd["MaSP"],
+                                TenSP = rd["TenSP"] as string ?? string.Empty,
+                                DonGia = (decimal)rd["DonGia"],
+                                SoLuongTon = (int)rd["SoLuongTon"],
+                                HanSuDung = (DateTime)rd["HanSuDung"]
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
