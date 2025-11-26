@@ -8,5 +8,7 @@ namespace QuanLyCafe.BLL.Interfaces
         List<SanPham> GetAll();
         void ThemSanPham(SanPham sp);
         void SuaSanPham(SanPham sp);
+        void XoaSanPham(SanPham sp);
+        List<SanPham> TimKiem(SanPham sp);
     }
 }

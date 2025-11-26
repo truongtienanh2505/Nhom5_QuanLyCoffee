@@ -62,7 +62,7 @@ namespace QuanLyCafe.DAL.Repositories
                                 MaKH = reader["MaKH"] == DBNull.Value ? null : (int?)reader["MaKH"],
                                 NgayGD = (DateTime)reader["NgayGD"],
                                 TongTien = (decimal)reader["TongTien"],
-                                KhuyenMai = (decimal)reader["KhuyenMai"],
+                                KhuyenMai = reader["KhuyenMai"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["KhuyenMai"]),
                                 SoTienPhaiTra = (decimal)reader["SoTienPhaiTra"]
                             };
                         }

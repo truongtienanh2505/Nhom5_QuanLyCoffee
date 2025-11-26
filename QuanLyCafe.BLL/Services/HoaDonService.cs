@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using QuanLyCafe.BLL.Interfaces;
+﻿using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
 
@@ -19,8 +17,9 @@ namespace QuanLyCafe.BLL.Services
 
         public int TaoHoaDon(int? maKh)
         {
-            return _repo.TaoHoaDon(maKh);
+            return _hoaDonRepository.TaoHoaDon(maKh);
         }
+        
 
         public void TinhTienHoaDon(int maHd)
         {
@@ -37,12 +36,12 @@ namespace QuanLyCafe.BLL.Services
 
         public HoaDon? GetById(int maHd)
         {
-            return _repo.GetById(maHd);
+            return _hoaDonRepository.GetById(maHd);
         }
 
         public List<HoaDon> GetByDate(DateTime from, DateTime to)
         {
-            return _repo.GetByDate(from, to);
+            return _hoaDonRepository.GetByDate(from, to);
         }
     }
 }
