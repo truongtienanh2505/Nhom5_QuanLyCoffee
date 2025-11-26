@@ -11,11 +11,11 @@ namespace QuanLyCafe.DAL.Repositories
 {
     public class UserRepository
     {
-        public User Login(string username, string password)
+        public User? Login(string username, string password)
         {
-            using (var conn = DatabaseConfig.GetConnection())
+            using (var conn = DatabaseConfig.Connection)
             {
-                string query = "SELECT * FROM Users WHERE Username=@u AND Password=@p";
+                string query = "SELECT * FROM NguoiDung WHERE TenDangNhap=@u AND MatKhau=@p";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@u", username);
@@ -26,8 +26,8 @@ namespace QuanLyCafe.DAL.Repositories
                 {
                     return new User
                     {
-                        UserId = (int)reader["UserId"],
-                        Username = reader["Username"].ToString()
+                        UserId = (int)reader["MaND"],
+                        Username = reader["MaND"] as string ?? string.Empty
                     };
                 }
             }

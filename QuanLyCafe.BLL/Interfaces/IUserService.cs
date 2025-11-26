@@ -8,7 +8,7 @@ using QuanLyCafe.Models;
 
 namespace QuanLyCafe.BLL.Interfaces
 {
-    public class IUserService
+    public interface IUserService
     {
         User Login(string username, string password);
     }

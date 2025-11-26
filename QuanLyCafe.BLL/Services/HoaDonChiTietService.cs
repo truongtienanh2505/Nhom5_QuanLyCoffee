@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using QuanLyCafe.BLL.Interfaces;
+﻿using QuanLyCafe.BLL.Interfaces;
+using QuanLyCafe.DAL;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
-
+using System;
+using System.Collections.Generic;
 namespace QuanLyCafe.BLL.Services
 {
     public class HoaDonChiTietService : IHoaDonChiTietService
@@ -43,12 +44,19 @@ namespace QuanLyCafe.BLL.Services
 
             var ct = new HoaDonChiTiet
             {
-                MaHd = maHd,
-                MaSp = maSp,
+                MaHD = maHd,
+                MaSP = maSp,
                 SoLuong = soLuong,
                 DonGia = sanPham.DonGia
             };
             _chiTietRepository.ThemChiTiet(maHd, maSp, soLuong);
+        }
+        public void XoaChiTiet(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("ID chi tiết hóa đơn không hợp lệ.");
+
+            _chiTietRepository.XoaChiTiet(id);
         }
 
         public List<HoaDonChiTiet> GetByHoaDon(int maHd)

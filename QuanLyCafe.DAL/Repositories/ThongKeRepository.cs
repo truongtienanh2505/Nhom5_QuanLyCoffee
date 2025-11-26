@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using QuanLyCafe.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace QuanLyCafe.DAL.Repositories
 {
@@ -90,8 +91,9 @@ namespace QuanLyCafe.DAL.Repositories
                     GROUP BY YEAR(NgayGD), MONTH(NgayGD)
                     ORDER BY YEAR(NgayGD), MONTH(NgayGD)";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@nam", (object)nam ?? DBNull.Value);
+                SqlCommand cmd = new SqlCommand(sql, conn); 
+                cmd.Parameters.AddWithValue("@nam", nam.HasValue ? nam.Value : (object)DBNull.Value);
+
 
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())

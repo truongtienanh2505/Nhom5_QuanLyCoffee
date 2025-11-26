@@ -24,7 +24,17 @@ namespace QuanLyCafe.DAL.Repositories
                 }
             }
         }
-
+        public void UpdateTongTien(int maHd, decimal tongTien)
+        {
+            using var conn = new SqlConnection(DatabaseConfig.ConnectionString);
+            conn.Open();
+            using var cmd = new SqlCommand(
+                "UPDATE HoaDon SET TongTien = @TongTien, SoTienPhaiTra = @TongTien - KhuyenMai WHERE MaHD = @MaHD",
+                conn);
+            cmd.Parameters.AddWithValue("@MaHD", maHd);
+            cmd.Parameters.AddWithValue("@TongTien", tongTien);
+            cmd.ExecuteNonQuery();
+        }
         public void TinhTienHoaDon(int maHd)
         {
             using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -62,7 +72,7 @@ namespace QuanLyCafe.DAL.Repositories
                                 MaKH = reader["MaKH"] == DBNull.Value ? null : (int?)reader["MaKH"],
                                 NgayGD = (DateTime)reader["NgayGD"],
                                 TongTien = (decimal)reader["TongTien"],
-                                KhuyenMai = (decimal)reader["KhuyenMai"],
+                                KhuyenMai = reader["KhuyenMai"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["KhuyenMai"]),
                                 SoTienPhaiTra = (decimal)reader["SoTienPhaiTra"]
                             };
                         }

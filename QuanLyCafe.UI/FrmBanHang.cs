@@ -21,6 +21,7 @@ namespace QuanLyCafe.UI
         private readonly IHoaDonChiTietService _ctService;
 
         private int _currentMaHD = 0;
+
         public FrmBanHang(ISanPhamService sp,
                           IKhachHangService kh,
                           IHoaDonService hd,
@@ -94,10 +95,7 @@ namespace QuanLyCafe.UI
                 return;
             }
 
-            FrmChiTietHoaDon frm = new FrmChiTietHoaDon(
-            _currentMaHD,
-            new HoaDonService(),
-            new HoaDonChiTietService());
+            FrmChiTietHoaDon frm = new FrmChiTietHoaDon(_currentMaHD, _hdService, _ctService);
             frm.ShowDialog();
         }
 
