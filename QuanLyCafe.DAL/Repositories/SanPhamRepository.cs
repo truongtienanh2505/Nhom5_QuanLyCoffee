@@ -8,16 +8,18 @@ namespace QuanLyCafe.DAL.Repositories
 {
     public class SanPhamRepository
     {
+       
         public List<SanPham> GetAll()
         {
             var result = new List<SanPham>();
 
-            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            using (var conn = new SqlConnection(_connStr))
             {
                 conn.Open();
 
                 using (var cmd = new SqlCommand(
-                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham", conn))
+                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
+                           "FROM SanPham WHERE IsActive = 1", conn))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -28,7 +30,9 @@ namespace QuanLyCafe.DAL.Repositories
                             TenSP = (string)reader["TenSP"],
                             DonGia = (decimal)reader["DonGia"],
                             SoLuongTon = (int)reader["SoLuongTon"],
-                            HanSuDung = (DateTime)reader["HanSuDung"]
+                            HanSuDung = (DateTime)reader["HanSuDung"],
+                            // Nếu muốn map luôn:
+                            IsActive = true
                         });
                     }
                 }
@@ -36,6 +40,7 @@ namespace QuanLyCafe.DAL.Repositories
 
             return result;
         }
+
 
         public void ThemSanPham(SanPham sp)
         {
@@ -88,30 +93,34 @@ namespace QuanLyCafe.DAL.Repositories
 
         public List<SanPham> TimKiem(string keyword)
         {
-            List<SanPham> list = new List<SanPham>();
-            using (SqlConnection conn = new SqlConnection(_connStr))
+            var list = new List<SanPham>();
+
+            using (var conn = new SqlConnection(_connStr))
+            using (var cmd = new SqlCommand(
+                "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham WHERE TenSP LIKE @kw", conn))
             {
-                SqlCommand cmd = new SqlCommand(
-                    "SELECT * FROM SanPham WHERE TenSP LIKE @kw", conn);
                 cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
 
                 conn.Open();
-                SqlDataReader rd = cmd.ExecuteReader();
-
-                while (rd.Read())
+                using (var rd = cmd.ExecuteReader())
                 {
-                    list.Add(new SanPham
+                    while (rd.Read())
                     {
-                        MaSP = (int)rd["MaSP"],
-                        TenSP = rd["TenSP"] as string ?? string.Empty,
-                        DonGia = (decimal)rd["DonGia"],
-                        SoLuongTon = (int)rd["SoLuongTon"],
-                        HanSuDung = (DateTime)rd["HanSuDung"]
-                    });
+                        list.Add(new SanPham
+                        {
+                            MaSP = rd["MaSP"] != DBNull.Value ? (int)rd["MaSP"] : 0,
+                            TenSP = rd["TenSP"] != DBNull.Value ? rd["TenSP"].ToString() : string.Empty,
+                            DonGia = rd["DonGia"] != DBNull.Value ? (decimal)rd["DonGia"] : 0,
+                            SoLuongTon = rd["SoLuongTon"] != DBNull.Value ? (int)rd["SoLuongTon"] : 0,
+                            HanSuDung = rd["HanSuDung"] != DBNull.Value ? (DateTime)rd["HanSuDung"] : DateTime.MinValue
+                        });
+                    }
                 }
             }
+
             return list;
         }
+
         private readonly string _connStr = DatabaseConfig.ConnectionString;
             public List<SanPham> GetSanPhamSapHetHan()
         {
