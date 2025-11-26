@@ -4,6 +4,7 @@ using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCafe.BLL.Services
 {
@@ -31,7 +32,7 @@ namespace QuanLyCafe.BLL.Services
             ValidateKhachHang(kh);
             try
             {
-                _khachHangRepository.ThemKhachHang(kh);
+                _repo.ThemKhachHang(kh);
             }
             catch (Exception ex)
             {
@@ -47,7 +48,7 @@ namespace QuanLyCafe.BLL.Services
             ValidateKhachHang(kh);
             try
             {
-                _khachHangRepository.SuaKhachHang(kh);
+                _repo.SuaKhachHang(kh);
             }
             catch (Exception ex)
             {
@@ -62,7 +63,7 @@ namespace QuanLyCafe.BLL.Services
 
             try
             {
-                _khachHangRepository.XoaKhachHang(maKh);
+                _repo.XoaKhachHang(maKh);
             }
             catch (Exception ex)
             {
@@ -71,6 +72,21 @@ namespace QuanLyCafe.BLL.Services
         }
 
         public List<KhachHang> TimKiem(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return new List<KhachHang>(); // Không tìm gì nếu từ khóa rỗng
+
+            try
+            {
+                return _repo.TimKiem(keyword);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi tìm kiếm khách hàng: " + ex.Message, ex);
+            }
+        }
+
+        private void ValidateKhachHang(KhachHang kh)
         {
             if (kh == null)
                 throw new ArgumentNullException(nameof(kh));

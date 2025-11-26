@@ -1,5 +1,6 @@
 ﻿using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.BLL.Services;
+using QuanLyCafe.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using QuanLyCafe.Models;
 
-namespace QuanLyCafe.BLL.Interfaces
-{
     namespace QuanLyCafe.BLL.Interfaces
     {
         public interface IHoaDonService
@@ -14,4 +11,3 @@ namespace QuanLyCafe.BLL.Interfaces
             List<HoaDon> GetByDate(DateTime from, DateTime to);
         }
     }
-}
