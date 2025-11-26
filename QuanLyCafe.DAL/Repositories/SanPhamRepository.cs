@@ -83,21 +83,24 @@ namespace QuanLyCafe.DAL.Repositories
         {
             using (SqlConnection conn = new SqlConnection(_connStr))
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM SanPham WHERE MaSP = @MaSP", conn);
+                SqlCommand cmd = new SqlCommand(
+                    "UPDATE SanPham SET IsActive = 0 WHERE MaSP = @MaSP", conn);
+
                 cmd.Parameters.AddWithValue("@MaSP", maSP);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-
         public List<SanPham> TimKiem(string keyword)
         {
             var list = new List<SanPham>();
 
             using (var conn = new SqlConnection(_connStr))
             using (var cmd = new SqlCommand(
-                "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham WHERE TenSP LIKE @kw", conn))
+                "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
+                "FROM SanPham " +
+                "WHERE IsActive = 1 AND TenSP LIKE @kw", conn))
             {
                 cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
 
@@ -112,7 +115,8 @@ namespace QuanLyCafe.DAL.Repositories
                             TenSP = rd["TenSP"] != DBNull.Value ? rd["TenSP"].ToString() : string.Empty,
                             DonGia = rd["DonGia"] != DBNull.Value ? (decimal)rd["DonGia"] : 0,
                             SoLuongTon = rd["SoLuongTon"] != DBNull.Value ? (int)rd["SoLuongTon"] : 0,
-                            HanSuDung = rd["HanSuDung"] != DBNull.Value ? (DateTime)rd["HanSuDung"] : DateTime.MinValue
+                            HanSuDung = rd["HanSuDung"] != DBNull.Value ? (DateTime)rd["HanSuDung"] : DateTime.MinValue,
+                            IsActive = true
                         });
                     }
                 }
@@ -149,12 +153,13 @@ namespace QuanLyCafe.DAL.Repositories
         }
         public SanPham? GetById(int id)
         {
-            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            using (var conn = new SqlConnection(_connStr))
             {
                 conn.Open();
 
                 using (var cmd = new SqlCommand(
-                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham WHERE MaSP = @id",
+                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
+                           "FROM SanPham WHERE IsActive = 1 AND MaSP = @id",
                            conn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
@@ -169,7 +174,8 @@ namespace QuanLyCafe.DAL.Repositories
                                 TenSP = rd["TenSP"] as string ?? string.Empty,
                                 DonGia = (decimal)rd["DonGia"],
                                 SoLuongTon = (int)rd["SoLuongTon"],
-                                HanSuDung = (DateTime)rd["HanSuDung"]
+                                HanSuDung = (DateTime)rd["HanSuDung"],
+                                IsActive = true
                             };
                         }
                     }
