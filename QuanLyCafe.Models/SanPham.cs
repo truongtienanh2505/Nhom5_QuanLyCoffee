@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace QuanLyCafe.Models
+﻿namespace QuanLyCafe.Models
 {
     public class SanPham
     {
@@ -10,5 +7,8 @@ namespace QuanLyCafe.Models
         public decimal DonGia { get; set; }
         public int SoLuongTon { get; set; }
         public DateTime HanSuDung { get; set; }
+
+        // THÊM DÒNG NÀY
+        public bool IsActive { get; set; } = true;
     }
 }

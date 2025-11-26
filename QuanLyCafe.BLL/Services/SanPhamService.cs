@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
@@ -56,11 +57,40 @@ namespace QuanLyCafe.BLL.Services
                 throw new Exception("Lỗi khi sửa sản phẩm: " + ex.Message, ex);
             }
         }
-        public SanPham GetById(int id)
+        public void XoaSanPham(SanPham sp)
         {
-            return _spRepository.GetById(id);
+            if (sp == null)
+                throw new ArgumentNullException(nameof(sp));
 
+            try
+            {
+                _spRepository.XoaSanPham(sp.MaSP);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi xóa sản phẩm: " + ex.Message, ex);
+            }
         }
+        public List<SanPham> TimKiem(SanPham sp)
+        {
+            if (sp == null)
+                throw new ArgumentNullException(nameof(sp));
+
+            return _spRepository.TimKiem(sp.TenSP);
+        }
+
+        public SanPham? GetById(int id)
+        {
+            try
+            {
+                return _spRepository.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy sản phẩm theo ID: " + ex.Message, ex);
+            }
+        }
+
         public void ValidateSanPham(SanPham sp)
         {
             if (sp == null)

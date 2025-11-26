@@ -127,16 +127,7 @@ namespace QuanLyCafe.DAL.Repositories
                 string query = "SELECT MaKH, TenKH, SDT, DiaChi FROM KhachHang WHERE TenKH LIKE @kw OR SDT LIKE @kw";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-<<<<<<< HEAD
-<<<<<<< HEAD
                     cmd.Parameters.AddWithValue("@kw", $"%{keyword}%");
-
-=======
-                    cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
->>>>>>> 4a19a492e43cb4f94bae5345c185c9bbe5ed24d3
-=======
-                    cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
->>>>>>> origin/Kieu_nx
                     conn.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -145,21 +136,9 @@ namespace QuanLyCafe.DAL.Repositories
                             list.Add(new KhachHang
                             {
                                 MaKH = reader["MaKH"] != DBNull.Value ? (int)reader["MaKH"] : 0,
-<<<<<<< HEAD
-<<<<<<< HEAD
                                 TenKH = reader["TenKH"]?.ToString() ?? "",
                                 SDT = reader["SDT"]?.ToString() ?? "",
                                 DiaChi = reader["DiaChi"]?.ToString() ?? ""
-=======
-                                TenKH = reader["TenKH"] != DBNull.Value ? reader["TenKH"].ToString() : string.Empty,
-                                SDT = reader["SDT"] != DBNull.Value ? reader["SDT"].ToString() : string.Empty,
-                                DiaChi = reader["DiaChi"] != DBNull.Value ? reader["DiaChi"].ToString() : string.Empty
->>>>>>> 4a19a492e43cb4f94bae5345c185c9bbe5ed24d3
-=======
-                                TenKH = reader["TenKH"] != DBNull.Value ? reader["TenKH"].ToString() : string.Empty,
-                                SDT = reader["SDT"] != DBNull.Value ? reader["SDT"].ToString() : string.Empty,
-                                DiaChi = reader["DiaChi"] != DBNull.Value ? reader["DiaChi"].ToString() : string.Empty
->>>>>>> origin/Kieu_nx
                             });
                         }
                     }

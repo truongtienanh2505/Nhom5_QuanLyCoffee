@@ -1,12 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
-using QuanLyCafe.BLL.Interfaces;
-using QuanLyCafe.BLL.Interfaces.QuanLyCafe.BLL.Interfaces;
-using QuanLyCafe.DAL;
+﻿using QuanLyCafe.BLL.Interfaces;
 using QuanLyCafe.DAL.Repositories;
 using QuanLyCafe.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace QuanLyCafe.BLL.Services
 {

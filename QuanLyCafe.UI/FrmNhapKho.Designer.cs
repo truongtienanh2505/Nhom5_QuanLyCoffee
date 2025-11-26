@@ -39,6 +39,10 @@
             dgvNhapGanDay = new DataGridView();
             panel4 = new Panel();
             btnNhapKho = new Button();
+            MaNK = new DataGridViewTextBoxColumn();
+            MaSP = new DataGridViewTextBoxColumn();
+            SoLuong = new DataGridViewTextBoxColumn();
+            NgayNhap = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
@@ -50,18 +54,20 @@
             // panel1
             // 
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(3, 2);
+            panel1.Location = new Point(2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(629, 72);
+            panel1.Size = new Size(503, 58);
             panel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(192, 7);
+            label1.Location = new Point(154, 6);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(258, 51);
+            label1.Size = new Size(218, 42);
             label1.TabIndex = 0;
             label1.Text = "NHẬP KHO";
             // 
@@ -71,89 +77,128 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(cboSanPham);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(1, 80);
+            panel2.Location = new Point(1, 64);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(632, 50);
+            panel2.Size = new Size(506, 40);
             panel2.TabIndex = 1;
             // 
             // numSoLuong
             // 
-            numSoLuong.Location = new Point(501, 11);
+            numSoLuong.Location = new Point(401, 9);
+            numSoLuong.Margin = new Padding(2);
             numSoLuong.Name = "numSoLuong";
-            numSoLuong.Size = new Size(122, 31);
+            numSoLuong.Size = new Size(98, 27);
             numSoLuong.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(401, 13);
+            label3.Location = new Point(321, 10);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(94, 25);
+            label3.Size = new Size(76, 20);
             label3.TabIndex = 2;
             label3.Text = "Số lượng :";
             // 
             // cboSanPham
             // 
             cboSanPham.FormattingEnabled = true;
-            cboSanPham.Location = new Point(118, 10);
+            cboSanPham.Location = new Point(94, 8);
+            cboSanPham.Margin = new Padding(2);
             cboSanPham.Name = "cboSanPham";
-            cboSanPham.Size = new Size(265, 33);
+            cboSanPham.Size = new Size(213, 28);
             cboSanPham.TabIndex = 1;
             cboSanPham.SelectedIndexChanged += cboSanPham_SelectedIndexChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(11, 13);
+            label2.Location = new Point(9, 10);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(100, 25);
+            label2.Size = new Size(81, 20);
             label2.TabIndex = 0;
             label2.Text = "Sản Phẩm :";
             // 
             // panel3
             // 
             panel3.Controls.Add(dgvNhapGanDay);
-            panel3.Location = new Point(0, 136);
+            panel3.Location = new Point(0, 109);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(631, 189);
+            panel3.Size = new Size(505, 151);
             panel3.TabIndex = 2;
             // 
             // dgvNhapGanDay
             // 
             dgvNhapGanDay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNhapGanDay.Location = new Point(6, 4);
+            dgvNhapGanDay.Columns.AddRange(new DataGridViewColumn[] { MaNK, MaSP, SoLuong, NgayNhap });
+            dgvNhapGanDay.Location = new Point(5, 3);
+            dgvNhapGanDay.Margin = new Padding(2);
             dgvNhapGanDay.Name = "dgvNhapGanDay";
             dgvNhapGanDay.RowHeadersWidth = 62;
-            dgvNhapGanDay.Size = new Size(622, 185);
+            dgvNhapGanDay.Size = new Size(498, 148);
             dgvNhapGanDay.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.Controls.Add(btnNhapKho);
-            panel4.Location = new Point(1, 333);
+            panel4.Location = new Point(1, 266);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(631, 68);
+            panel4.Size = new Size(505, 54);
             panel4.TabIndex = 3;
             // 
             // btnNhapKho
             // 
-            btnNhapKho.Location = new Point(417, 6);
+            btnNhapKho.Location = new Point(334, 5);
+            btnNhapKho.Margin = new Padding(2);
             btnNhapKho.Name = "btnNhapKho";
-            btnNhapKho.Size = new Size(168, 50);
+            btnNhapKho.Size = new Size(134, 40);
             btnNhapKho.TabIndex = 0;
             btnNhapKho.Text = "Nhập Kho";
             btnNhapKho.UseVisualStyleBackColor = true;
             btnNhapKho.Click += btnNhapKho_Click;
             // 
+            // MaNK
+            // 
+            MaNK.HeaderText = "Mã nhập kho";
+            MaNK.MinimumWidth = 6;
+            MaNK.Name = "MaNK";
+            MaNK.Width = 125;
+            // 
+            // MaSP
+            // 
+            MaSP.HeaderText = "Mã sản phẩm";
+            MaSP.MinimumWidth = 6;
+            MaSP.Name = "MaSP";
+            MaSP.Width = 125;
+            // 
+            // SoLuong
+            // 
+            SoLuong.HeaderText = "Số lượng";
+            SoLuong.MinimumWidth = 6;
+            SoLuong.Name = "SoLuong";
+            SoLuong.Width = 125;
+            // 
+            // NgayNhap
+            // 
+            NgayNhap.HeaderText = "Ngày nhập";
+            NgayNhap.MinimumWidth = 6;
+            NgayNhap.Name = "NgayNhap";
+            NgayNhap.Width = 125;
+            // 
             // FrmNhapKho
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(636, 401);
+            ClientSize = new Size(509, 321);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(2);
             Name = "FrmNhapKho";
             Text = "FrmNhapKho";
             panel1.ResumeLayout(false);
@@ -180,5 +225,9 @@
         private DataGridView dgvNhapGanDay;
         private Panel panel4;
         private Button btnNhapKho;
+        private DataGridViewTextBoxColumn MaNK;
+        private DataGridViewTextBoxColumn MaSP;
+        private DataGridViewTextBoxColumn SoLuong;
+        private DataGridViewTextBoxColumn NgayNhap;
     }
 }
