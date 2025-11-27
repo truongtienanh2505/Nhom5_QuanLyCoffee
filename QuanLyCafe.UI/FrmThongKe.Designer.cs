@@ -120,6 +120,7 @@
             btnThongKeNgay.TabIndex = 3;
             btnThongKeNgay.Text = "Thống kê theo ngày";
             btnThongKeNgay.UseVisualStyleBackColor = true;
+            btnThongKeNgay.Click += btnThongKeNgay_Click;
             // 
             // btnThongKeThang
             // 
@@ -129,6 +130,7 @@
             btnThongKeThang.TabIndex = 4;
             btnThongKeThang.Text = "Thống kê theo tháng";
             btnThongKeThang.UseVisualStyleBackColor = true;
+            btnThongKeThang.Click += btnThongKeThang_Click;
             // 
             // label3
             // 
@@ -258,6 +260,7 @@
             Controls.Add(panel1);
             Name = "FrmThongKe";
             Text = "FrmThongKe";
+            Load += FrmThongKe_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

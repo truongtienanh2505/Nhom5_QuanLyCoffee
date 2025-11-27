@@ -7,14 +7,17 @@ namespace QuanLyCafe.DAL
     {
        
         public static string ConnectionString =
-            "Server=localhost;Database=QuanLyCoffee;User Id=sa;Password=123456;TrustServerCertificate=True;";
+            "Server=(localdb)\\MSSQLLocalDB;Database=QuanLyCoffee;User Id=sa;Password=123456;TrustServerCertificate=True;";
 
-      
-        public static SqlConnection GetConnection()
+
+        public static SqlConnection Connection
         {
-            var conn = new SqlConnection(ConnectionString);
-            conn.Open();
-            return conn;
+            get
+            {
+                var conn = new SqlConnection(ConnectionString);
+                conn.Open();
+                return conn;
+            }
         }
     }
 }

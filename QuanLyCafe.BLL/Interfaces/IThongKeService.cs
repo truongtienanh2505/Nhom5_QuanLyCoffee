@@ -8,5 +8,7 @@ namespace QuanLyCafe.BLL.Interfaces
     {
         List<SanPham> GetSanPhamSapHetHan();
         List<DoanhThuNgay> GetDoanhThuNgay(DateTime? from = null, DateTime? to = null);
+        List<DoanhThuThang> GetDoanhThuThang(int? nam = null);
+
     }
 }

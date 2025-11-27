@@ -39,16 +39,16 @@
             panel2 = new Panel();
             label1 = new Label();
             panel3 = new Panel();
+            lblSoHD = new Label();
+            lblDoanhThu = new Label();
+            lblSPHetHan = new Label();
+            lblTotalSP = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             panel5 = new Panel();
             label3 = new Label();
-            lblTotalSP = new Label();
-            lblSPHetHan = new Label();
-            lblDoanhThu = new Label();
-            lblSoHD = new Label();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -77,6 +77,7 @@
             btnThongKe.TabIndex = 2;
             btnThongKe.Text = "Thống kê";
             btnThongKe.UseVisualStyleBackColor = true;
+            btnThongKe.Click += btnThongKe_Click;
             // 
             // btnNhapKho
             // 
@@ -86,6 +87,7 @@
             btnNhapKho.TabIndex = 2;
             btnNhapKho.Text = "Nhập Kho";
             btnNhapKho.UseVisualStyleBackColor = true;
+            btnNhapKho.Click += btnNhapKho_Click;
             // 
             // btnBanHang
             // 
@@ -95,6 +97,7 @@
             btnBanHang.TabIndex = 2;
             btnBanHang.Text = "Bán Hàng";
             btnBanHang.UseVisualStyleBackColor = true;
+            btnBanHang.Click += btnBanHang_Click;
             // 
             // btnKhachHang
             // 
@@ -104,6 +107,7 @@
             btnKhachHang.TabIndex = 2;
             btnKhachHang.Text = "Khách Hàng";
             btnKhachHang.UseVisualStyleBackColor = true;
+            btnKhachHang.Click += btnKhachHang_Click;
             // 
             // btnSanPham
             // 
@@ -113,6 +117,7 @@
             btnSanPham.TabIndex = 2;
             btnSanPham.Text = "Sản Phẩm";
             btnSanPham.UseVisualStyleBackColor = true;
+            btnSanPham.Click += btnSanPham_Click;
             // 
             // panel4
             // 
@@ -169,6 +174,42 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(475, 442);
             panel3.TabIndex = 2;
+            // 
+            // lblSoHD
+            // 
+            lblSoHD.AutoSize = true;
+            lblSoHD.Location = new Point(192, 241);
+            lblSoHD.Name = "lblSoHD";
+            lblSoHD.Size = new Size(69, 25);
+            lblSoHD.TabIndex = 8;
+            lblSoHD.Text = "label11";
+            // 
+            // lblDoanhThu
+            // 
+            lblDoanhThu.AutoSize = true;
+            lblDoanhThu.Location = new Point(206, 186);
+            lblDoanhThu.Name = "lblDoanhThu";
+            lblDoanhThu.Size = new Size(69, 25);
+            lblDoanhThu.TabIndex = 7;
+            lblDoanhThu.Text = "label10";
+            // 
+            // lblSPHetHan
+            // 
+            lblSPHetHan.AutoSize = true;
+            lblSPHetHan.Location = new Point(164, 131);
+            lblSPHetHan.Name = "lblSPHetHan";
+            lblSPHetHan.Size = new Size(59, 25);
+            lblSPHetHan.TabIndex = 6;
+            lblSPHetHan.Text = "label9";
+            // 
+            // lblTotalSP
+            // 
+            lblTotalSP.AutoSize = true;
+            lblTotalSP.Location = new Point(164, 75);
+            lblTotalSP.Name = "lblTotalSP";
+            lblTotalSP.Size = new Size(59, 25);
+            lblTotalSP.TabIndex = 5;
+            lblTotalSP.Text = "label8";
             // 
             // label7
             // 
@@ -227,42 +268,6 @@
             label3.Text = "Thông Tin";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblTotalSP
-            // 
-            lblTotalSP.AutoSize = true;
-            lblTotalSP.Location = new Point(164, 75);
-            lblTotalSP.Name = "lblTotalSP";
-            lblTotalSP.Size = new Size(59, 25);
-            lblTotalSP.TabIndex = 5;
-            lblTotalSP.Text = "label8";
-            // 
-            // lblSPHetHan
-            // 
-            lblSPHetHan.AutoSize = true;
-            lblSPHetHan.Location = new Point(164, 131);
-            lblSPHetHan.Name = "lblSPHetHan";
-            lblSPHetHan.Size = new Size(59, 25);
-            lblSPHetHan.TabIndex = 6;
-            lblSPHetHan.Text = "label9";
-            // 
-            // lblDoanhThu
-            // 
-            lblDoanhThu.AutoSize = true;
-            lblDoanhThu.Location = new Point(206, 186);
-            lblDoanhThu.Name = "lblDoanhThu";
-            lblDoanhThu.Size = new Size(69, 25);
-            lblDoanhThu.TabIndex = 7;
-            lblDoanhThu.Text = "label10";
-            // 
-            // lblSoHD
-            // 
-            lblSoHD.AutoSize = true;
-            lblSoHD.Location = new Point(192, 241);
-            lblSoHD.Name = "lblSoHD";
-            lblSoHD.Size = new Size(69, 25);
-            lblSoHD.TabIndex = 8;
-            lblSoHD.Text = "label11";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -273,6 +278,7 @@
             Controls.Add(panel1);
             Name = "MainForm";
             Text = "MainForm";
+            Load += MainForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

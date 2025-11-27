@@ -59,5 +59,19 @@ namespace QuanLyCafe.DAL.Repositories
 
             return result;
         }
+        public void XoaChiTiet(int id)
+        {
+            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new SqlCommand("SP_XoaCTHD", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
