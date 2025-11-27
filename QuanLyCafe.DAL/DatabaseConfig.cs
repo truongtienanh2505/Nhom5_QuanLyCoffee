@@ -7,7 +7,7 @@ namespace QuanLyCafe.DAL
     {
        
         public static string ConnectionString =
-            "Server=(localdb)\\MSSQLLocalDB;Database=QuanLyCoffee;User Id=sa;Password=123456;TrustServerCertificate=True;";
+            "Server=localhost;Database=QuanLyCoffee;User Id=sa;Password=123456;TrustServerCertificate=True;";
 
 
         public static SqlConnection Connection
