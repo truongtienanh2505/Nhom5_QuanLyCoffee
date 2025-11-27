@@ -81,5 +81,10 @@ namespace QuanLyCafe.UI
         {
             LoadNhapGanDay();
         }
+
+        private void FrmNhapKho_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

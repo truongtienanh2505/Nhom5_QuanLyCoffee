@@ -37,12 +37,12 @@
             label2 = new Label();
             panel3 = new Panel();
             dgvNhapGanDay = new DataGridView();
-            panel4 = new Panel();
-            btnNhapKho = new Button();
             MaNK = new DataGridViewTextBoxColumn();
             MaSP = new DataGridViewTextBoxColumn();
             SoLuong = new DataGridViewTextBoxColumn();
             NgayNhap = new DataGridViewTextBoxColumn();
+            panel4 = new Panel();
+            btnNhapKho = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
@@ -141,26 +141,6 @@
             dgvNhapGanDay.Size = new Size(498, 148);
             dgvNhapGanDay.TabIndex = 0;
             // 
-            // panel4
-            // 
-            panel4.Controls.Add(btnNhapKho);
-            panel4.Location = new Point(1, 266);
-            panel4.Margin = new Padding(2);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(505, 54);
-            panel4.TabIndex = 3;
-            // 
-            // btnNhapKho
-            // 
-            btnNhapKho.Location = new Point(334, 5);
-            btnNhapKho.Margin = new Padding(2);
-            btnNhapKho.Name = "btnNhapKho";
-            btnNhapKho.Size = new Size(134, 40);
-            btnNhapKho.TabIndex = 0;
-            btnNhapKho.Text = "Nhập Kho";
-            btnNhapKho.UseVisualStyleBackColor = true;
-            btnNhapKho.Click += btnNhapKho_Click;
-            // 
             // MaNK
             // 
             MaNK.HeaderText = "Mã nhập kho";
@@ -189,6 +169,26 @@
             NgayNhap.Name = "NgayNhap";
             NgayNhap.Width = 125;
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(btnNhapKho);
+            panel4.Location = new Point(1, 266);
+            panel4.Margin = new Padding(2);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(505, 54);
+            panel4.TabIndex = 3;
+            // 
+            // btnNhapKho
+            // 
+            btnNhapKho.Location = new Point(334, 5);
+            btnNhapKho.Margin = new Padding(2);
+            btnNhapKho.Name = "btnNhapKho";
+            btnNhapKho.Size = new Size(134, 40);
+            btnNhapKho.TabIndex = 0;
+            btnNhapKho.Text = "Nhập Kho";
+            btnNhapKho.UseVisualStyleBackColor = true;
+            btnNhapKho.Click += btnNhapKho_Click;
+            // 
             // FrmNhapKho
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -201,6 +201,7 @@
             Margin = new Padding(2);
             Name = "FrmNhapKho";
             Text = "FrmNhapKho";
+            Load += FrmNhapKho_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
