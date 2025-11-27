@@ -8,18 +8,16 @@ namespace QuanLyCafe.DAL.Repositories
 {
     public class SanPhamRepository
     {
-       
         public List<SanPham> GetAll()
         {
             var result = new List<SanPham>();
 
-            using (var conn = new SqlConnection(_connStr))
+            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
             {
                 conn.Open();
 
                 using (var cmd = new SqlCommand(
-                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
-                           "FROM SanPham WHERE IsActive = 1", conn))
+                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham", conn))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -30,9 +28,7 @@ namespace QuanLyCafe.DAL.Repositories
                             TenSP = (string)reader["TenSP"],
                             DonGia = (decimal)reader["DonGia"],
                             SoLuongTon = (int)reader["SoLuongTon"],
-                            HanSuDung = (DateTime)reader["HanSuDung"],
-                            // Nếu muốn map luôn:
-                            IsActive = true
+                            HanSuDung = (DateTime)reader["HanSuDung"]
                         });
                     }
                 }
@@ -40,7 +36,6 @@ namespace QuanLyCafe.DAL.Repositories
 
             return result;
         }
-
 
         public void ThemSanPham(SanPham sp)
         {
@@ -83,48 +78,40 @@ namespace QuanLyCafe.DAL.Repositories
         {
             using (SqlConnection conn = new SqlConnection(_connStr))
             {
-                SqlCommand cmd = new SqlCommand(
-                    "UPDATE SanPham SET IsActive = 0 WHERE MaSP = @MaSP", conn);
-
+                SqlCommand cmd = new SqlCommand("DELETE FROM SanPham WHERE MaSP = @MaSP", conn);
                 cmd.Parameters.AddWithValue("@MaSP", maSP);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
         public List<SanPham> TimKiem(string keyword)
         {
-            var list = new List<SanPham>();
-
-            using (var conn = new SqlConnection(_connStr))
-            using (var cmd = new SqlCommand(
-                "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
-                "FROM SanPham " +
-                "WHERE IsActive = 1 AND TenSP LIKE @kw", conn))
+            List<SanPham> list = new List<SanPham>();
+            using (SqlConnection conn = new SqlConnection(_connStr))
             {
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT * FROM SanPham WHERE TenSP LIKE @kw", conn);
                 cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
 
                 conn.Open();
-                using (var rd = cmd.ExecuteReader())
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
                 {
-                    while (rd.Read())
+                    list.Add(new SanPham
                     {
-                        list.Add(new SanPham
-                        {
-                            MaSP = rd["MaSP"] != DBNull.Value ? (int)rd["MaSP"] : 0,
-                            TenSP = rd["TenSP"] != DBNull.Value ? rd["TenSP"].ToString() : string.Empty,
-                            DonGia = rd["DonGia"] != DBNull.Value ? (decimal)rd["DonGia"] : 0,
-                            SoLuongTon = rd["SoLuongTon"] != DBNull.Value ? (int)rd["SoLuongTon"] : 0,
-                            HanSuDung = rd["HanSuDung"] != DBNull.Value ? (DateTime)rd["HanSuDung"] : DateTime.MinValue,
-                            IsActive = true
-                        });
-                    }
+                        MaSP = (int)rd["MaSP"],
+                        TenSP = rd["TenSP"] as string ?? string.Empty,
+                        DonGia = (decimal)rd["DonGia"],
+                        SoLuongTon = (int)rd["SoLuongTon"],
+                        HanSuDung = (DateTime)rd["HanSuDung"]
+                    });
                 }
             }
-
             return list;
         }
-
         private readonly string _connStr = DatabaseConfig.ConnectionString;
             public List<SanPham> GetSanPhamSapHetHan()
         {
@@ -153,13 +140,12 @@ namespace QuanLyCafe.DAL.Repositories
         }
         public SanPham? GetById(int id)
         {
-            using (var conn = new SqlConnection(_connStr))
+            using (var conn = new SqlConnection(DatabaseConfig.ConnectionString))
             {
                 conn.Open();
 
                 using (var cmd = new SqlCommand(
-                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung " +
-                           "FROM SanPham WHERE IsActive = 1 AND MaSP = @id",
+                           "SELECT MaSP, TenSP, DonGia, SoLuongTon, HanSuDung FROM SanPham WHERE MaSP = @id",
                            conn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
@@ -174,8 +160,7 @@ namespace QuanLyCafe.DAL.Repositories
                                 TenSP = rd["TenSP"] as string ?? string.Empty,
                                 DonGia = (decimal)rd["DonGia"],
                                 SoLuongTon = (int)rd["SoLuongTon"],
-                                HanSuDung = (DateTime)rd["HanSuDung"],
-                                IsActive = true
+                                HanSuDung = (DateTime)rd["HanSuDung"]
                             };
                         }
                     }
