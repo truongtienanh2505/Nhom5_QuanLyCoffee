@@ -4,7 +4,9 @@
 	<ItemGroup>
     <ProjectReference Include="..\QuanLyCafe.BLL\QuanLyCafe.BLL.csproj" />
     <ProjectReference Include="..\QuanLyCafe.Models\QuanLyCafe.Models.csproj" />
-    
+
+   
+
   </ItemGroup>
 
   <ItemGroup>

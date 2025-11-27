@@ -17,21 +17,38 @@ namespace QuanLyCafe.BLL.Services
 
         public void NhapKho(int maSp, int soLuong)
         {
-            if (maSp <= 0)
-                throw new ArgumentException("Mã sản phẩm không hợp lệ.");
+            ValidateNhapKho(maSp, soLuong);
 
-            if (soLuong <= 0)
-                throw new ArgumentException("Số lượng nhập phải > 0.");
-
-            _nhapKhoRepository.NhapKho(maSp, soLuong);
+            try
+            {
+                _nhapKhoRepository.NhapKho(maSp, soLuong);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi nhập kho: " + ex.Message, ex);
+            }
         }
 
         public List<NhapKho> GetBySanPham(int maSp)
         {
             if (maSp <= 0)
                 throw new ArgumentException("Mã sản phẩm không hợp lệ.");
+            try
+            {
+                return _nhapKhoRepository.GetBySanPham(maSp);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thông tin nhập kho: " + ex.Message, ex);
+            }
+        }
+        private void ValidateNhapKho(int maSp, int soLuong)
+        {
+            if (maSp <= 0)
+                throw new ArgumentException("Mã sản phẩm không hợp lệ.");
 
-            return _nhapKhoRepository.GetBySanPham(maSp);
+            if (soLuong <= 0)
+                throw new ArgumentException("Số lượng nhập phải lớn hơn 0.");
         }
     }
 }

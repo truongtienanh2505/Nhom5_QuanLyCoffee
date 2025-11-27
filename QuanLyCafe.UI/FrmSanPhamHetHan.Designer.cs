@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
             label1 = new Label();
+            panel2 = new Panel();
             dgvHetHan = new DataGridView();
+            panel3 = new Panel();
             btnLamMoi = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHetHan).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -47,22 +47,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(721, 66);
             panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(dgvHetHan);
-            panel2.Location = new Point(3, 74);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(721, 288);
-            panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(btnLamMoi);
-            panel3.Location = new Point(3, 368);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(723, 82);
-            panel3.TabIndex = 2;
             // 
             // label1
             // 
@@ -75,6 +59,14 @@
             label1.Text = "SẢN PHẨM SẮP HẾT HẠN/ HẾT HẠN";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(dgvHetHan);
+            panel2.Location = new Point(3, 74);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(721, 288);
+            panel2.TabIndex = 1;
+            // 
             // dgvHetHan
             // 
             dgvHetHan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -84,6 +76,14 @@
             dgvHetHan.Size = new Size(712, 280);
             dgvHetHan.TabIndex = 0;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(btnLamMoi);
+            panel3.Location = new Point(3, 368);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(723, 82);
+            panel3.TabIndex = 2;
+            // 
             // btnLamMoi
             // 
             btnLamMoi.Location = new Point(507, 12);
@@ -92,6 +92,7 @@
             btnLamMoi.TabIndex = 0;
             btnLamMoi.Text = "Làm Mới";
             btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // FrmSanPhamHetHan
             // 
@@ -103,11 +104,12 @@
             Controls.Add(panel1);
             Name = "FrmSanPhamHetHan";
             Text = "FrmSanPhamHetHan";
+            Load += FrmSanPhamHetHan_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHetHan).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
